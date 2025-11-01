@@ -1,109 +1,112 @@
-import os
-from doc_analyzer import TextDocument, WordDocument
-from tqdm import tqdm
-from pathlib import Path
 
-FOOTER = "\n©Aviraj Saha 2023"
-START_UP_MESSAGE = """
-\033[1m\033[94mDocuMind - A document analysis module.\033[0m
+# DocsMind - Document Analysis Module
 
-\033[92mThis module provides functionality to analyze text documents, including summarization and sentiment analysis.\033[0m
-
-\033[93mAuthor:\033[0m \033[1mAviraj Saha\033[0m
-\033[93mCopyright:\033[0m \033[1;35m©Aviraj Saha 2023\033[0m
-"""
+DocuMind is a document analysis module that provides functionality to analyze text documents, including summarization and sentiment analysis.
 
 
-def output(
-    file_path: str, file_type: str, output_path: str, no_of_sentences: int
-) -> None:
-    """
-    Analyzes the document and writes the summary and sentiment to the output file.
 
-    Args:
-        file_path (str): The path to the input document.
-        file_type (str): The type of the input document ('.txt' or '.docx').
-        output_path (str): The path to the output file.
-        no_of_sentences (int): The number of sentences for the summary.
-    """
-    document = (
-        WordDocument(file_path) if file_type != ".txt" else TextDocument(file_path)
-    )
-    output_file_name = f"{Path(file_path).stem}_documind_output.txt"
-    output_file_path = Path(output_path) / output_file_name
-    output_file_path.parent.mkdir(parents=True, exist_ok=True)
+## Table of Contents
+- [Overview](#overview)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Example](#example)
+- [Contributing](#contributing)
+- [License](#license)
 
-    with open(output_file_path, "w") as file:
-        summary = "\n".join(document.summarize(no_of_sentences).split("."))
-        sentiment = document.analyze_sentiment()
-        file.write(
-            f"{summary}sentiment as analyzed by the model: {sentiment}\n{FOOTER}"
-        )
+## Overview
 
+The module consists of three main files:
 
-def input_validation() -> tuple:
-    """
-    Validates and retrieves input values from the user.
+- `main.py`: This file is the entry point of the DocuMind document analysis module. It provides a command-line interface for analyzing text documents. It uses the `doc_analyzer` module to perform document analysis and outputs the results to a file.
 
-    Returns:
-        tuple: A tuple containing the validated input values.
-    """
-    file_path = input("Enter a valid file path for .txt or a .docx file: ")
-    file_type = os.path.splitext(file_path)[1]
+- `doc_analyzer.py`: This file contains the `Document`, `TextDocument`, and `WordDocument` classes that encapsulate the functionality for document summarization and sentiment analysis. It uses the Sumy library for text summarization and the TextBlob library for sentiment analysis.
 
-    if file_type not in [".txt", ".docx"]:
-        raise ValueError("Invalid file type. Please provide a .txt or .docx file.")
+- `cmd_utility.py`: This file contains the command-line utility functions for parsing command-line arguments, handling logging, and calling the `output` function in `main.py`.
 
-    output_path = input("Enter path for output: ")
-    no_of_sentences = int(input("Enter number of lines for summary: "))
+## Installation
 
-    return file_path, file_type, output_path, no_of_sentences
+1. Clone this repository to your local machine:
 
+   ```bash
+   git clone https://github.com/Aviraj06/DocuMind.git
+   ```
 
-def process(
-    file_path: str, file_type: str, output_path: str, no_of_sentences: int
-) -> None:
-    """
-    Process the document analysis and display progress.
+2. Navigate to the project directory:
 
-    Args:
-        file_path (str): The path to the input document.
-        file_type (str): The type of the input document ('.txt' or '.docx').
-        output_path (str): The path to the output file.
-        no_of_sentences (int): The number of sentences for the summary.
-    """
-    try:
-        with tqdm(
-            total=100, desc="Loading", bar_format="{l_bar}{bar} {n_fmt}/{total_fmt}"
-        ) as pbar:
-            output(file_path, file_type, output_path, no_of_sentences)
-            pbar.update(100 - pbar.n)
+   ```bash
+   cd DocuMind
+   ```
 
-        print("\n\n" + "\033[92m" + "Process finished successfully!" + "\033[0m")
-        output_file_name = f"{Path(file_path).stem}_documind_output.txt"
-        print(f"Results saved at: {Path(output_path) / output_file_name}")
-    except ValueError as e:
-        print(f"Error: {str(e)}")
-    except FileNotFoundError:
-        print("Error: Input file not found.")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+3. Install the required dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+To analyze a text document using DocuMind, follow these steps:
+
+1. Open a terminal or command prompt and navigate to the project directory.
+
+2. Run the `main.py` script:
+
+   ```bash
+   python main.py
+   ```
+
+3. You will be prompted to enter the path to the input document (.txt or .docx), the output path, and the number of sentences for the summary.
+
+4. The script will analyze the document and generate an output file with the summarized text and sentiment analysis results.
 
 
-def main() -> None:
-    """
-    Main function to run the DocuMind document analysis module.
-    """
-    print(START_UP_MESSAGE)
+## Example
 
-    try:
-        file_path, file_type, output_path, no_of_sentences = input_validation()
-        process(file_path, file_type, output_path, no_of_sentences)
-    except ValueError as e:
-        print(f"Error: {str(e)}")
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
+```shell
+python main.py
+```
+
+**Sample Output:**
+
+```
+DocsMind - A document analysis module.
+
+This module provides functionality to analyze text documents, including summarization and sentiment analysis.
 
 
-if __name__ == "__main__":
-    main()
+
+Enter a valid file path for .txt or a .docx file: path/to/input/document.txt
+Enter path for output: path/to/output/
+Enter number of lines for summary: 3
+
+Loading: 100%|█████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 32.11it/s]
+
+Process finished successfully!
+Results saved at: path/to/output/document_documind_output.txt
+```
+
+## Contributing
+
+Contributions to DocuMind are welcome! If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature/bug fix:
+
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+
+3. Make your changes and commit them:
+
+   ```bash
+   git commit -m "Add your commit message"
+   ```
+
+4. Push your changes to your forked repository:
+
+   ```bash
+   git push origin feature/your-feature
+   ```
+
+5. Open a pull request on the original repository.
