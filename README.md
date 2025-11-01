@@ -25,6 +25,7 @@ Installation
 Clone the Repository:
 
 git clone [https://github.com/your-username/Historical-Document-Analysis.git](https://github.com/thebikashnath/Historical-Document-Analysis.git)
+
 cd Historical-Document-Analysis
 
 
@@ -38,3 +39,4 @@ Running the Analysis
 Execute the main script from your terminal:
 
 python analysis.py
+
