@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: historical-doc-analyzer
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python -m textblob.download_corpora
+      python -m spacy download en_core_web_sm
+    startCommand: gunicorn app:app
+    autoDeploy: true
+    branch: main
+    repo: https://github.com/YOUR_USERNAME/historical-doc-analyzer
