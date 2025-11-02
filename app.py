@@ -3,7 +3,6 @@ import spacy
 from textblob import TextBlob
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-
 import os
 
 app = Flask(__name__)
@@ -11,7 +10,7 @@ nlp = spacy.load("en_core_web_sm")
 
 def generate_wordcloud(keywords):
     text = " ".join(keywords)
-    wc = WordCloud(width=800, height=400, background_color="#fdf6e3", colormap="copper", font_path=None)
+    wc = WordCloud(width=800, height=400, background_color="#fdf6e3", colormap="copper")
     wc.generate(text)
     wc.to_file("static/historical_wordcloud.png")
 
