@@ -1,4 +1,6 @@
-textblob
-spacy
 flask
+spacy
+textblob
+wordcloud
+matplotlib
 gunicorn
