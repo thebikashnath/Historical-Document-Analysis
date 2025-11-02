@@ -1,33 +1,33 @@
-📜 Historical Document Analyzer
-An advanced NLP-powered web application that analyzes historical texts for named entities, keywords, sentiment, and generates a word cloud visualization. Built with Flask, SpaCy, TextBlob, WordCloud, and Bootstrap, styled with a parchment‑inspired theme to evoke the feel of archival research.
+# 📜 Historical Document Analyzer
 
-✨ Features
-🔍 Named Entity Recognition (NER) — Extracts people, places, dates, and organizations
+An advanced NLP-powered web application that analyzes historical texts for **named entities, keywords, sentiment**, and generates a **word cloud visualization**.  
+Built with **Flask, SpaCy, TextBlob, WordCloud, and Bootstrap**, styled with a parchment‑inspired theme to evoke the feel of archival research.
 
-🗝️ Keyword Extraction — Highlights important words in the text
+---
 
-📈 Sentiment Analysis — Detects tone (positive, negative, neutral) with polarity & subjectivity scores
+## ✨ Features
 
-☁️ Word Cloud Visualization — Generates a historical‑themed word cloud of keywords
+- 🔍 **Named Entity Recognition (NER)** — Extracts people, places, dates, and organizations  
+- 🗝️ **Keyword Extraction** — Highlights important words in the text  
+- 📈 **Sentiment Analysis** — Detects tone (positive, negative, neutral) with polarity & subjectivity scores  
+- ☁️ **Word Cloud Visualization** — Generates a historical‑themed word cloud of keywords  
+- 📁 **File Upload Support** — Upload `.txt` files for analysis  
+- 🎨 **Historical UI** — Elegant parchment‑style background, serif fonts, and responsive Bootstrap layout  
 
-📁 File Upload Support — Upload .txt files for analysis
+---
 
-🎨 Historical UI — Elegant parchment‑style background, serif fonts, and responsive Bootstrap layout
+## 🏗️ Project Structure
 
-🏗️ Project Structure
+historical-doc-analyzer/ ├── app.py ├── requirements.txt ├── static/ │ ├── images/ │ │ └── background.png # parchment-style background │ └── historical_wordcloud.png # generated word cloud ├── templates/ │ └── index.html # main UI
+
 Code
-historical-doc-analyzer/
-├── app.py
-├── requirements.txt
-├── static/
-│   ├── images/
-│   │   └── background.png        # parchment-style background
-│   └── historical_wordcloud.png  # generated word cloud
-├── templates/
-│   └── index.html                # main UI
-⚙️ Installation
-1. Clone the repository
-bash
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone the repository
+```bash
 git clone https://github.com/yourusername/historical-doc-analyzer.git
 cd historical-doc-analyzer
 2. Create a virtual environment
