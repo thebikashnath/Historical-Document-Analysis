@@ -18,11 +18,15 @@ Built with **Flask, SpaCy, TextBlob, WordCloud, and Bootstrap**, styled with a p
 
 ## 🏗️ Project Structure
 
-historical-doc-analyzer/ ├── app.py ├── requirements.txt ├── static/ │ ├── images/ │ │ └── background.png # parchment-style background │ └── historical_wordcloud.png # generated word cloud ├── templates/ │ └── index.html # main UI
-
-Code
-
----
+historical-doc-analyzer/ 
+├── app.py 
+├── requirements.txt
+├── static/ │ 
+├── images/ │ 
+│ └── background.png # parchment-style background 
+│ └── historical_wordcloud.png # generated word cloud 
+├── templates/ 
+│ └── index.html # main UI
 
 ## ⚙️ Installation
 
@@ -30,6 +34,7 @@ Code
 ```bash
 git clone https://github.com/yourusername/historical-doc-analyzer.git
 cd historical-doc-analyzer
+
 2. Create a virtual environment
 bash
 python -m venv venv
@@ -42,6 +47,7 @@ pip install -r requirements.txt
 bash
 python -m textblob.download_corpora
 python -m spacy download en_core_web_sm
+
 🚀 Running Locally
 bash
 python app.py
@@ -66,12 +72,6 @@ textblob
 wordcloud
 matplotlib
 gunicorn
-📸 Screenshots
-Landing Page — parchment‑style UI with text input & file upload
-
-Analysis Results — entities, keywords, sentiment cards
-
-Word Cloud — dynamically generated visualization
 
 🧑‍💻 Author
 Built with ❤️ by Bikash Inspired by archival research, powered by modern NLP.
